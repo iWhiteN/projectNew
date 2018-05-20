@@ -1,7 +1,10 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { HomeComponent, PageNotFoundComponent, CarriersComponent, CheduleComponent, SellingComponent } from './components';
+import { RoutesAppComponent } from './components/routes-app/routes-app.component';
 
-import { HomeComponent, PageNotFoundComponent } from './components';
 
 const routes: Routes = [
   {
@@ -9,9 +12,24 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'carriers',
+    component: CarriersComponent
+  },
+  {
+    path: 'chedule',
+    component: CheduleComponent
+  },
+  {
+    path: 'routes-app',
+    component: RoutesAppComponent
+  },
+  {
+    path: 'selling',
+    component: SellingComponent
+  },
+  {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
+    component: HomeComponent
   },
   {
     path: '**',
@@ -19,13 +37,22 @@ const routes: Routes = [
   }
 ];
 
-export const appRouterComponents = [HomeComponent, PageNotFoundComponent];
-
-
 @NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    CarriersComponent,
+    CheduleComponent,
+    RoutesAppComponent,
+    SellingComponent
+  ],
   imports: [
+    BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppRoutingModule { }
